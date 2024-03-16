@@ -138,24 +138,7 @@ public class MainActivity
 
     @Override
     public void onSuccess(Text text) {
-        List<Text.TextBlock> blocks = text.getTextBlocks();
-        String resultados="";
-        if (blocks.size() == 0) {
-            resultados = "No hay Texto";
-        }else{
-            for (int i = 0; i < blocks.size(); i++) {
-                List<Text.Line> lines = blocks.get(i).getLines();
-                for (int j = 0; j < lines.size(); j++) {
-                    List<Text.Element> elements = lines.get(j).getElements();
-                    for (int k = 0; k < elements.size(); k++) {
-                        resultados = resultados + elements.get(k).getText() + " ";
-                    }
-                }
-                resultados=resultados + "\n";
-            }
-            resultados=resultados + "\n";
-        }
-        txtResults.setText(resultados);
+
     }
 
     public ByteBuffer convertirImagenATensorBuffer(Bitmap mSelectedImage){
@@ -238,12 +221,6 @@ public class MainActivity
             txtResults.setText(e.getMessage());
         }
     }
-
-    @Override
-    public void onMapClick(LatLng latLng) {
-
-    }
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -278,5 +255,10 @@ public class MainActivity
         txtcodeiso3.setText(paisModel.getIso3());
         txtfips.setText(paisModel.getFips());
         txtisonum.setText(String.valueOf(paisModel.getIsoN()));
+    }
+
+    @Override
+    public void onMapClick(LatLng latLng) {
+
     }
 }
